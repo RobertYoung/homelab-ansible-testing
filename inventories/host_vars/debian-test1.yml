@@ -1,0 +1,3 @@
+---
+hostname: debian-test1
+fqdn: "{{ hostname }}.{{ domain }}"
