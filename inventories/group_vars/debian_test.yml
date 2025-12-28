@@ -1,0 +1,5 @@
+---
+# Debian test server configuration
+
+# Domain configuration
+domain: local.iamrobertyoung.co.uk
