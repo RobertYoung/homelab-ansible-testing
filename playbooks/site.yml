@@ -40,21 +40,10 @@
       tags: [syslog]
       vars:
         syslog_fqdn: "{{ fqdn }}"
-        # Shipping to both while the migration off Graylog is proven
-        # (homelab-talos#178). Drop the Graylog entry once this host's logs
-        # are confirmed in Loki; keeping both costs nothing but duplicates.
-        #
-        # octet-counted framing on the Loki receiver only: rsyslog's default
-        # is newline-delimited, which makes the receiver wait for the next
-        # message to know the current one ended, so a quiet host's last line
-        # sits in limbo. Graylog's entry is left on the default rather than
-        # changed alongside, so this is one variable at a time.
-        syslog_destinations:
-          - host: graylog.local.iamrobertyoung.co.uk
-            port: 5140
-          - host: syslog.k8s.local.iamrobertyoung.co.uk
-            port: 6514
-            framing: octet-counted
+        # No syslog_destinations override: v2.0.0 defaults to the in-cluster
+        # Loki receiver, which is what this host has already been proven
+        # against (RobertYoung/homelab-talos#178). The version pin is the
+        # cutover.
 
     - role: wazuh-agent
       tags: [wazuh-agent]

@@ -31,7 +31,7 @@ roles:
 
   - src: git@github.com:RobertYoung/homelab-ansible-role-syslog.git
     scm: git
-    version: v1.2.0
+    version: v2.0.0
     name: syslog
 
   - src: git@github.com:RobertYoung/homelab-ansible-role-wazuh-agent.git
